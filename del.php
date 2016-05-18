@@ -1,7 +1,8 @@
 <?php if (!isset($_SESSION)) {
 session_start();
 include_once("db.php");
-}?>
+}
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -77,12 +78,18 @@ while($row = $result -> fetch_assoc()){
 }
 ?>
 </table>
-
+<form  action="delcheck.php" method="POST" name="myForm">
+<div class="form-group">
+      <div class="col-lg-10 " align="center">
+      enter:<input type="text" name="delid" placeholder="number">
+      <button type="submit" class="btn btn-primary" onclick="">del</button>
+      <button class="btn btn-default" type = "reset" >Cancel</button>
+      </div>
+    </div>
+    </form>
 <div class="topone">
 	<ul class="nav navbar-nav" >
- 		<li><a href="new.php">new</a></li>
-        <li><a href="update.php" >update</a></li>
-        <li><a href="del.php" >del</a></li>
+ 		<li><a href="management.php">back</a></li>
         <li><a href="index.php" >Home</a></li>
     </ul>
 </div>		

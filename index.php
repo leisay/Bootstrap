@@ -1,97 +1,125 @@
+<?php if (!isset($_SESSION)) {
+session_start();
+}
+
+
+    $hit = file_get_contents("count.txt");
+    file_put_contents("count.txt", ((int)$hit) + 1 );
+
+?>
 <!DOCTYPE html>
-<html lang="zh_TW">
+<html lang="zh">
 <head>
-<meta charset="utf-8">
-<title>final testing</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bootstrap">
-<meta name="author" content="test">
+	<!--meta-->
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1">
+	<meta name="keywords"    content="HTML, CSS, framework, bootstrap, front-end, frontend, web development">
+	<meta name="description" content="wellcome to this place">
+	<meta name="author"      content="leisay">
+	<meta name="google-site-verification" content="test" />
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href='css/bootstrap-responsive.css' rel='stylesheet'>
-<link href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet">
-<link href="css/finaltest.css" rel="stylesheet">
+	<title>
+				wellcome
+	</title>
 
+	<!-- css -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css' rel='stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="css/index.css" rel="stylesheet">
+    <!-- js -->
 
-<!-- 引入js檔案開始 -->
-<script src="js/jquery1.8.js"></script>
-<script src="js/jquery-ui-1.8.23.custom.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<!-- 引入js檔案結束 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<!-- icon -->
+	<link rel="icon" href="img/L.ico">
+
 </head>
+<script>
 
+var message = "<?php echo $_SESSION['member_id']; ?>";
+$(document).ready(function(){ 
+    var x = $(message).text().trim(); 
+    if (x > 0 ) { 
+    	$(".logoutt").hide(); 
+        $(".loginn").show(); 
+        
+    } 
+    else { 
+    	$(".loginn").hide(); 
+        $(".logoutt").show(); 
+        
+    } 
+});
+
+
+</script>
+<style type="text/css">
+
+
+</style>
 <body>
-<!--放入網頁主體-->
-<!--first-->
-<div class="topone"></div>
-<!--second-->
-<div class="toptwo"></div>
-<!-- Brand and toggle get grouped for better mobile display -->
-<!--nav-->
-<nav class="navbar navbar-default" >
-    <div class="container-fluid" >
-    <div class="navbar-header" >
-      <a class="navbar-brand" href="#" >wellcome</a>
-    </div>
-    <div>
+
+<div class="topzero">
+	<p class="wordone">WellCome</p>
+</div>
+
+<div class="topone">
       <ul class="nav navbar-nav" >
         <li><a href="index.php">Home</a></li>
-        <li><a href="two.php" >Talk</a></li>
+        <li><a href="login.php" class= "loginn">Login</a></li>
+        <li><a href="email.php">Talk</a></li>
+        <li><a href="demo.php" >Demo</a></li>
         <li><a href="shoptest.php" >Shop</a></li>
-        <li><a href="login.php" >LOG IN</a></li>
-        <li><a href="picture.php" > Picture</a></li>
-        <li><a href="management.php" > Management</a></li>
+        <li><a href="about.php" >Data</a></li>
+        <li><a href="manage.php" >Manage</a></li>
+        <li><a href="logout.php" class= "logoutt">LogOut</a></li>
+        <li><a href="" class= "">參訪人數:<?php echo file_get_contents("count.txt"); ?></a></li>
       </ul>
-    </div>
-  </div>
-</nav>
-
-
-<!--全畫面-->
-<div class ="allgroup"> 
-<!--全區塊-->  
-<div class="blockall">
-
-<!--左區塊--> 
-<div class="leftall">
-<!--left-->
-<div class ="leftone"></div>
-<div class ="lefttwo"></div>
-<div class ="leftthr"></div>
+       
 </div>
 
-<!--中區塊-->
-<div class="midall">
-<!--mid-->
+<div class="allview">
+	
+	<div class="hexagon2">
+		<a href="login.php" class="text1"><h1>Login</h1></a>
+	</div>
+	<div class="hexagon2">
+		<a href="shoptest.php" class="text1"><h1>Shop</h1></a>
+	</div>
 
-<div class="midtwo"></div>
-<div class="midthr"></div>
-<div class="midfou"></div>		
+<div class="toptwo"></div>
 
+	<div class="hexagon1">
+		<a href="chat.php" class="text1"><h1>Talk</h1></a>
+	</div>
+	<div class="hexagon1">
+		<a href="index.php" class="text1"><h1>Home</h1></a>
+	</div>
+	<div class="hexagon1">
+		<a href="about.php" class="text1"><h1>Data</h1></a>
+	</div>
+
+<div class="toptwo"></div>
+
+	<div class="hexagon2">
+		<a href="demo.php" class="text1"><h1>Demo</h1></a>
+	</div>
+	<div class="hexagon2">
+		<a href="manage.php" class="text1"><h1>Manage</h1></a>
+	</div>
 </div>
-
-<!--右區塊-->
-<div class="rightall">
-<!--right-->
-<div class="rightone"></div>
-<div class="righttwo"></div>
-
-
-</div>
-</div>
-</div>
-
-
-
-
-  <!-- 主要內容欄位開始 -->
-  <!-- 主要內容欄位結束 -->
-  <!-- 頁腳開始 -->
-  <footer>
-    <p align="center">&copy; Company 2015</p>
-  </footer>
-  <!-- 頁腳結束 -->
-</div> 
-<!-- 主要內容欄位結束 -->
 </body>
-</html>
+
+<footer>
+    <div class="footone"> 
+    <P align="center" class="copypadding">&copy; <?php echo date("Y")?></p>
+    </div>
+</footer>
+
+
+</html> 
+

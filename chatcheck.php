@@ -1,16 +1,11 @@
-<?php if (!isset($_SESSION)) {
-session_start();
-}
-
-$Account  = $_POST['Account'];
-$Password = $_POST['Password'];
+<?PHP
 
 $servername = "localhost";
 $username = "root";
 $password = "123";
 $dbname = "test";
 
-
+$time = date("Y:m:d H:i:s",time()+28800);
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -18,33 +13,29 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+$sql="INSERT into `chat` (
+        `author`, `content`, 
+        `time`) 
+        values (
+        '{$_POST['author']}','{$_POST['content']}',
+        '$time')";
 
-
-$sql = "SELECT * FROM `member1` Where Account = '$Account' AND Password = '$Password'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-    	$userid = $row["member_id"];
-    	$_SESSION['member_id'] = $userid;
-    	echo "<br>well come! member:".$row["member_id"]."";
-    	echo "<br> Account:".$row["Account"]."";
-
-    	header("location: index.php");
-        
+        echo "<br> Author:".$row["author"]."";
+        echo "<br> Content:".$row["content"]."";
+        echo "<br> time:".$row["time"]."";
        
     }
 } else {
     echo "Account or Password Fail";
+    header("location:chat.php");
 }
 
-
-
-
 $conn -> close();
-
-
-
+header("location:chat.php");
 
 ?>

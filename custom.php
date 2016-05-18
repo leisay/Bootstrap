@@ -20,7 +20,7 @@ include_once("db.php");
 	<!-- css -->
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css' rel='stylesheet">
-	<link href="css/work.css" rel="stylesheet">
+	<link href="css/#" rel="stylesheet">
 
 	<!-- js -->
 
@@ -30,8 +30,82 @@ include_once("db.php");
 
 	<!-- icon -->
 	<link rel="icon" href="img/L.ico">
-
 <style type="text/css">
+.topzero{
+	height: 100px;
+	width: ;
+	background: black;
+	margin-bottom: 100px;
+}
+.wordone{
+ 	color: 	#FFFFFF;
+ 	text-align: center;
+ 	padding-top: 30px;
+ }
+.tableone{
+	margin-top: 50px;
+	width: 600px;
+	height: 400px;
+	text-align: center;
+}
+.tittleone{
+	color: red;
+	background:#FFFFFF; 
+}
+
+
+.topone{
+	height: 50px;
+	width: 400px;
+	margin: 0px auto; 
+	padding-right: 15px;
+	padding-left: 15px;
+
+}
+
+.membernav{
+	width: 600px;
+	margin: 0px auto;
+	height: 50px;
+	background-color: #F0F0F0;
+	text-align: center;
+	color: black;
+	
+}
+.text0{
+	text-decoration:none;
+	padding-top: 15px;
+	list-style: none;
+}
+.text1{
+	text-decoration:none;
+	padding-top: 10px;
+	list-style: none;
+}
+
+th,table{
+	border-collapse: collapse;
+	border: 1px solid #E6CAFF;
+	text-align: center;
+}
+.tittle{
+	width: 600px;
+	margin: 0px auto;
+	height: 100px;
+	background-color:#FFFFFF;
+	color: blue;
+	text-align: center; 
+	
+}
+.memberinfo{
+	width: 600px;
+	margin: 0px auto;
+	height: 50px;
+	background-color:#FFFFFF;
+	color: black;
+	text-align: center; 
+}.memberinfo:hover {  background:	#E0E0E0 ;   }
+
 
 </style>
 </head>
@@ -39,16 +113,16 @@ include_once("db.php");
 <div class="topzero">
 	<p class="wordone">WellCome</p>
 </div>
-	<?php 
-	
-	$sql = "SELECT * FROM `member1` ORDER BY member_id ";
-	//$result = $conn->query($sql);
-	 $result=mysqli_query($conn,$sql) or die_content(mysqli_error($conn)."檢索資料失敗");
+<?php 
+	$member_id = $_SESSION['member_id'] ;
+	$sql = "SELECT * FROM member1 where member_id = $member_id ";
+	$result = $conn->query($sql);
 
 	?>
 
+
 <div class="membernav">
-	 <li class="text0"> WellCome admin</li>
+	 <li class="text0"> WellCome <?php echo $member_id ?></li>
 </div>
 
 <table class="tittle">
@@ -80,12 +154,10 @@ while($row = $result -> fetch_assoc()){
 
 <div class="topone">
 	<ul class="nav navbar-nav" >
- 		<li><a href="new.php">new</a></li>
+ 		<li><a href="shopinfo.php">shopinfo</a></li>
         <li><a href="update.php" >update</a></li>
-        <li><a href="del.php" >del</a></li>
         <li><a href="index.php" >Home</a></li>
     </ul>
-</div>		
-
+</div>	
 </body>
 </html>
